@@ -14,15 +14,14 @@ def get_dataframe(fname):
 
 def prep_dataframe(df):
    df['temp'] = df['Data_Value'] / 10.0
-   df.drop(columns=['Data_Value'])
    feb29s = df[(df['Date'].dt.day == 29) & (df['Date'].dt.month == 2)].index
-   df.drop(feb29s, inplace=True)
-   return df.drop(columns=['Data_Value'])
+   return df.drop(feb29s) \
+            .drop(labels=['Data_Value'], axis=1)
 
 
 def extract_element(df, element):
    return df[df['Element'] == element] \
-      .drop(columns=['Element']) \
+      .drop(['Element'], axis=1) \
       .rename(columns={'temp': element.lower()}) \
       .set_index(['ID', 'Date'])
 
