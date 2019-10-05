@@ -79,4 +79,4 @@ def get_percentage_female_characters(characters=characters):
     sex_ctr = Counter(sexes)
     females = sex_ctr['Female Characters']
     total = sum(sex_ctr.values())
-    return round(100*females/total,2)
+    return round(100 * females / total,2)
