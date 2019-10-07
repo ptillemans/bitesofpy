@@ -3,7 +3,7 @@ from urllib.request import urlretrieve
 
 import pandas as pd
 
-EXCEL = path.join(environ['TEMP'], 'order_data.xlsx')
+EXCEL = path.join(environ.get('TEMP', '/tmp'), 'order_data.xlsx')
 if not path.isfile(EXCEL):
     urlretrieve('https://bit.ly/2JpniQ2', EXCEL)
 
